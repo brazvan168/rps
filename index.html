@@ -20,6 +20,7 @@
         else if (computerChoice === 2) return "Paper";
         else return "Scissors";
       }
+
       function playRound(playerSelection, computerSelection) {
         let playerChoice = playerSelection.toLowerCase();
         let computerChoice = computerSelection.toLowerCase();
@@ -40,8 +41,7 @@
           return `You Win! ${playerChoice} beats ${computerChoice}`;
         }
       }
-      //   let playerPlay = prompt("Your Choice: ");
-      //   console.log(playRound(playerPlay, computerPlay()));
+
       function game() {
         for (let i = 0; i <= 4; i++) {
           console.log(`ROUND ${i + 1}`);
@@ -51,6 +51,10 @@
         console.log(
           `The Final Score is: Player-${playerScore} and Computer-${computerScore}`
         );
+        if (playerScore > computerScore) console.log("The Winner Is: Player!");
+        else if (playerScore < computerScore)
+          console.log("The Winner Is: Computer!");
+        else console.log("Draw!");
       }
       game();
     </script>
