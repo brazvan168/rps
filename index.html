@@ -15,7 +15,6 @@
           return Math.floor(Math.random() * (max - min)) + min;
         }
         let computerChoice = getRandomInt(1, 4);
-        console.log(computerChoice);
         if (computerChoice === 1) return "Rock";
         else if (computerChoice === 2) return "Paper";
         else return "Scissors";
@@ -25,9 +24,11 @@
         let playerChoice = playerSelection.toLowerCase();
         let computerChoice = computerSelection.toLowerCase();
         let result;
+        let roundChoices = `Your Choice: ${playerChoice} - Computer's Choice: ${computerChoice}`;
         if (playerChoice === computerChoice) {
           computerScore++;
           playerScore++;
+          console.log(roundChoices);
           return "Draw";
         } else if (
           (playerChoice === "rock" && computerChoice === "paper") ||
@@ -35,9 +36,11 @@
           (playerChoice === "scissors" && computerChoice === "rock")
         ) {
           computerScore++;
+          console.log(roundChoices);
           return `You Lose! ${computerChoice} beats ${playerChoice}`;
         } else {
           playerScore++;
+          console.log(roundChoices);
           return `You Win! ${playerChoice} beats ${computerChoice}`;
         }
       }
@@ -49,7 +52,7 @@
           console.log(playRound(playerPlay, computerPlay()));
         }
         console.log(
-          `The Final Score is: Player-${playerScore} and Computer-${computerScore}`
+          `\nThe Final Score is: Player-${playerScore} and Computer-${computerScore}`
         );
         if (playerScore > computerScore) console.log("The Winner Is: Player!");
         else if (playerScore < computerScore)
