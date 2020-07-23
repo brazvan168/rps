@@ -26,7 +26,7 @@
     </div>
     <p>PLAYER</p>
     <div id="score">
-      <div id="choices"></div>
+      <div id="choices"><br /></div>
       <div id="current"></div>
       <div id="final"></div>
       <div id="winner"></div>
@@ -42,6 +42,7 @@
       "use strict";
       let playerScore = 0;
       let computerScore = 0;
+      const lineBreak = document.createElement("br");
       const buttons = document.querySelectorAll(".buttons");
       const compChoice = document.querySelector("#comp-img");
       const current = document.querySelector("#current");
@@ -50,6 +51,7 @@
       const reset = document.querySelector("#reset");
       const score = document.querySelector("#score");
       const winner = document.querySelector("#winner");
+      current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
       function computerPlay() {
         function getRandomInt(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
@@ -98,17 +100,18 @@
       }
 
       function resetGame() {
+        playerScore = 0;
+        computerScore = 0;
         compChoice.removeAttribute("src");
         choices.textContent = "";
+        choices.appendChild(lineBreak);
+        current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
         final.textContent = "";
         winner.textContent = "";
         reset.style.visibility = "hidden";
-        playerScore = 0;
-        computerScore = 0;
       }
 
       function game() {
-        current.style.display = "none";
         final.textContent = `Final Score: Player-${playerScore} and Computer-${computerScore}`;
         if (playerScore > computerScore) winner.textContent = "Winner: Player";
         else if (playerScore < computerScore)
