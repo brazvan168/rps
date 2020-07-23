@@ -11,12 +11,27 @@
       <input type="button" id="paper" class="buttons" value="PAPER" />
       <input type="button" id="scissors" class="buttons" value="SCISSORS" />
     </div>
+    <div id="score">
+      Score:
+      <div id="final"></div>
+      <div id="winner"></div>
+      <input
+        type="button"
+        id="reset"
+        style="visibility: hidden;"
+        value="Reset"
+      />
+    </div>
 
     <script>
       "use strict";
       let playerScore = 0;
       let computerScore = 0;
       const buttons = document.querySelectorAll(".buttons");
+      const final = document.querySelector("#final");
+      const reset = document.querySelector("#reset");
+      const score = document.querySelector("#score");
+      const winner = document.querySelector("#winner");
       function computerPlay() {
         function getRandomInt(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
@@ -28,46 +43,59 @@
       }
 
       function playRound(playerSelection, computerSelection) {
-        let playerChoice = playerSelection.toLowerCase();
-        let computerChoice = computerSelection.toLowerCase();
-        let result;
-        let roundChoices = `Your Choice: ${playerChoice} - Computer's Choice: ${computerChoice}`;
-        if (playerChoice === computerChoice) {
-          computerScore++;
-          playerScore++;
-          console.log(roundChoices);
-          return "Draw";
-        } else if (
-          (playerChoice === "rock" && computerChoice === "paper") ||
-          (playerChoice === "paper" && computerChoice === "scissors") ||
-          (playerChoice === "scissors" && computerChoice === "rock")
-        ) {
-          computerScore++;
-          console.log(roundChoices);
-          return `You Lose! ${computerChoice} beats ${playerChoice}`;
+        if (playerScore === 5 || computerScore === 5) {
+          game();
         } else {
-          playerScore++;
-          console.log(roundChoices);
-          return `You Win! ${playerChoice} beats ${computerChoice}`;
+          let playerChoice = playerSelection.toLowerCase();
+          let computerChoice = computerSelection.toLowerCase();
+          let result;
+          let roundChoices = `Your Choice: ${playerChoice} - Computer's Choice: ${computerChoice}`;
+          if (playerChoice === computerChoice) {
+            computerScore++;
+            playerScore++;
+            console.log(roundChoices);
+            return "Draw";
+          } else if (
+            (playerChoice === "rock" && computerChoice === "paper") ||
+            (playerChoice === "paper" && computerChoice === "scissors") ||
+            (playerChoice === "scissors" && computerChoice === "rock")
+          ) {
+            computerScore++;
+            console.log(roundChoices);
+            return `You Lose! ${computerChoice} beats ${playerChoice}`;
+          } else {
+            playerScore++;
+            console.log(roundChoices);
+            return `You Win! ${playerChoice} beats ${computerChoice}`;
+          }
         }
       }
 
-      function game() {
-        buttons.forEach((button) => {
-          button.addEventListener("click", () => {
-            playRound(button.value, computerPlay());
-          });
-        });
-
-        console.log(
-          `\nThe Final Score is: Player-${playerScore} and Computer-${computerScore}`
-        );
-        if (playerScore > computerScore) console.log("The Winner Is: Player!");
-        else if (playerScore < computerScore)
-          console.log("The Winner Is: Computer!");
-        else console.log("Draw!");
+      function resetGame() {
+        final.textContent = "";
+        winner.textContent = "";
+        reset.style.visibility = "hidden";
+        playerScore = 0;
+        computerScore = 0;
+        console.clear();
       }
-      game();
+
+      function game() {
+        final.textContent = `The Final Score is: Player-${playerScore} and Computer-${computerScore}`;
+        if (playerScore > computerScore)
+          winner.textContent = "The Winner Is: Player!";
+        else if (playerScore < computerScore)
+          winner.textContent = "The Winner Is: Computer!";
+        else winner.textContent = "Draw";
+        reset.style.visibility = "visible";
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          playRound(button.value, computerPlay());
+        });
+      });
+      reset.addEventListener("click", resetGame);
     </script>
   </body>
 </html>
