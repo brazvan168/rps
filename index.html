@@ -8,8 +8,8 @@
   </head>
   <body>
     <div id="compChoice">
-      <button id="comp" class="buttons" value="comp">
-        <img class="icons" src="" />
+      <button id="comp">
+        <img id="comp-img" class="icons" />
       </button>
     </div>
     <div id="container">
@@ -41,7 +41,7 @@
       let playerScore = 0;
       let computerScore = 0;
       const buttons = document.querySelectorAll(".buttons");
-      const compChoice = document.querySelector("#compChoice");
+      const compChoice = document.querySelector("#comp-img");
       const current = document.querySelector("#current");
       const choices = document.querySelector("#choices");
       const final = document.querySelector("#final");
@@ -60,6 +60,7 @@
 
       function playRound(playerSelection, computerSelection) {
         current.style.display = "block";
+        let imageName = computerSelection.toLowerCase();
         let roundChoices = `Your Choice: ${playerSelection} - Computer's Choice: ${computerSelection}`;
         if (playerScore === 5 || computerScore === 5) game();
         else {
@@ -69,6 +70,7 @@
             if (playerScore === 5 || computerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
             choices.textContent = roundChoices;
+            displayComputerChoice(imageName);
           } else if (
             (playerSelection === "ROCK" && computerSelection === "PAPER") ||
             (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
@@ -78,18 +80,23 @@
             if (computerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
             choices.textContent = roundChoices;
+            displayComputerChoice(imageName);
           } else {
             playerScore++;
             if (playerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
             choices.textContent = roundChoices;
+            displayComputerChoice(imageName);
           }
         }
       }
 
-      function displayComputerChoice() {}
+      function displayComputerChoice(imageName) {
+        compChoice.setAttribute("src", `icons/${imageName}.svg`);
+      }
 
       function resetGame() {
+        compChoice.removeAttribute("src");
         choices.textContent = "";
         final.textContent = "";
         winner.textContent = "";
