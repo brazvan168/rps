@@ -1,3 +1,6 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
 .icons {
   width: 50px;
   height: 50px;
@@ -21,7 +24,7 @@
   grid-template-rows: 1fr;
   justify-items: center;
   padding: 10px;
-  max-width: 50%;
+  max-width: 45%;
 }
 #rock {
   justify-self: end;
@@ -41,4 +44,5 @@
 .players-text {
   text-align: center;
   font-size: 40px;
+  margin: 20px;
 }
