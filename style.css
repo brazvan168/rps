@@ -6,6 +6,13 @@
   width: 70px;
   height: 70px;
 }
+#comp {
+  width: 70px;
+  height: 70px;
+}
+#compChoice {
+  text-align: center;
+}
 #container {
   display: grid;
   margin: 0 auto;
@@ -28,5 +35,10 @@
   height: 50px;
 }
 #score {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+.players-text {
+  text-align: center;
+  font-size: 40px;
 }
