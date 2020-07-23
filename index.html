@@ -20,13 +20,13 @@
         <div id="choices"><br /></div>
         <div id="current"></div>
         <div id="final"></div>
-        <div id="winner"></div>
-        <input
+        <div id="winner"><br /></div>
+        <!-- <input
           type="button"
           id="reset"
           style="visibility: hidden;"
           value="PLAY AGAIN"
-        />
+        /> -->
       </div>
       <div id="container">
         <button id="rock" class="buttons" value="ROCK">
@@ -40,6 +40,14 @@
         </button>
       </div>
       <p class="players-text">PLAYER</p>
+      <button
+        id="reset"
+        class="buttons"
+        style="visibility: hidden;"
+        value="PLAY AGAIN"
+      >
+        <img src="icons/reset.svg" class="icons" />
+      </button>
     </div>
 
     <script>
@@ -110,8 +118,9 @@
         choices.textContent = "";
         choices.appendChild(lineBreak);
         current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+        current.style.display = "block";
+        winner.style.visibility = "hidden";
         final.textContent = "";
-        winner.textContent = "";
         reset.style.visibility = "hidden";
       }
 
@@ -121,7 +130,9 @@
         else if (playerScore < computerScore)
           winner.textContent = "Winner: Computer";
         else winner.textContent = "Draw";
+        winner.style.visibility = "visible";
         reset.style.visibility = "visible";
+        current.style.display = "none";
       }
 
       buttons.forEach((button) => {
