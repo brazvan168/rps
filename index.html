@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="style.css" type="text/css" rel="stylesheet" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <div id="container">
-      <input type="button" id="rock" class="buttons" value="ROCK" />
-      <input type="button" id="paper" class="buttons" value="PAPER" />
-      <input type="button" id="scissors" class="buttons" value="SCISSORS" />
+      <button id="rock" class="buttons" value="ROCK">
+        <img class="icons" src="icons/rock.svg" />
+      </button>
+      <button id="paper" class="buttons" value="PAPER">
+        <img class="icons" src="icons/paper.svg" />
+      </button>
+      <button id="scissors" class="buttons" value="SCISSORS">
+        <img class="icons" src="icons/scissors.svg" />
+      </button>
     </div>
     <div id="score">
-      Score:
+      <div id="choices"></div>
+      <div id="current"></div>
       <div id="final"></div>
       <div id="winner"></div>
       <input
         type="button"
         id="reset"
         style="visibility: hidden;"
-        value="Reset"
+        value="PLAY AGAIN"
       />
     </div>
 
@@ -28,6 +36,8 @@
       let playerScore = 0;
       let computerScore = 0;
       const buttons = document.querySelectorAll(".buttons");
+      const current = document.querySelector("#current");
+      const choices = document.querySelector("#choices");
       const final = document.querySelector("#final");
       const reset = document.querySelector("#reset");
       const score = document.querySelector("#score");
@@ -37,55 +47,55 @@
           return Math.floor(Math.random() * (max - min)) + min;
         }
         let computerChoice = getRandomInt(1, 4);
-        if (computerChoice === 1) return "Rock";
-        else if (computerChoice === 2) return "Paper";
-        else return "Scissors";
+        if (computerChoice === 1) return "ROCK";
+        else if (computerChoice === 2) return "PAPER";
+        else return "SCISSORS";
       }
 
       function playRound(playerSelection, computerSelection) {
-        if (playerScore === 5 || computerScore === 5) {
-          game();
-        } else {
-          let playerChoice = playerSelection.toLowerCase();
-          let computerChoice = computerSelection.toLowerCase();
-          let result;
-          let roundChoices = `Your Choice: ${playerChoice} - Computer's Choice: ${computerChoice}`;
-          if (playerChoice === computerChoice) {
+        current.style.display = "block";
+        let roundChoices = `Your Choice: ${playerSelection} - Computer's Choice: ${computerSelection}`;
+        if (playerScore === 5 || computerScore === 5) game();
+        else {
+          if (playerSelection === computerSelection) {
             computerScore++;
             playerScore++;
-            console.log(roundChoices);
-            return "Draw";
+            if (playerScore === 5 || computerScore === 5) game();
+            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            choices.textContent = roundChoices;
           } else if (
-            (playerChoice === "rock" && computerChoice === "paper") ||
-            (playerChoice === "paper" && computerChoice === "scissors") ||
-            (playerChoice === "scissors" && computerChoice === "rock")
+            (playerSelection === "ROCK" && computerSelection === "PAPER") ||
+            (playerSelection === "PAPER" && computerSelection === "SCISSORS") ||
+            (playerSelection === "SCISSORS" && computerSelection === "ROCK")
           ) {
             computerScore++;
-            console.log(roundChoices);
-            return `You Lose! ${computerChoice} beats ${playerChoice}`;
+            if (computerScore === 5) game();
+            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            choices.textContent = roundChoices;
           } else {
             playerScore++;
-            console.log(roundChoices);
-            return `You Win! ${playerChoice} beats ${computerChoice}`;
+            if (playerScore === 5) game();
+            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            choices.textContent = roundChoices;
           }
         }
       }
 
       function resetGame() {
+        choices.textContent = "";
         final.textContent = "";
         winner.textContent = "";
         reset.style.visibility = "hidden";
         playerScore = 0;
         computerScore = 0;
-        console.clear();
       }
 
       function game() {
-        final.textContent = `The Final Score is: Player-${playerScore} and Computer-${computerScore}`;
-        if (playerScore > computerScore)
-          winner.textContent = "The Winner Is: Player!";
+        current.style.display = "none";
+        final.textContent = `Final Score: Player-${playerScore} and Computer-${computerScore}`;
+        if (playerScore > computerScore) winner.textContent = "Winner: Player";
         else if (playerScore < computerScore)
-          winner.textContent = "The Winner Is: Computer!";
+          winner.textContent = "Winner: Computer";
         else winner.textContent = "Draw";
         reset.style.visibility = "visible";
       }
