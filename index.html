@@ -6,10 +6,17 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="container">
+      <input type="button" id="rock" class="buttons" value="ROCK" />
+      <input type="button" id="paper" class="buttons" value="PAPER" />
+      <input type="button" id="scissors" class="buttons" value="SCISSORS" />
+    </div>
+
     <script>
       "use strict";
       let playerScore = 0;
       let computerScore = 0;
+      const buttons = document.querySelectorAll(".buttons");
       function computerPlay() {
         function getRandomInt(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
@@ -46,11 +53,12 @@
       }
 
       function game() {
-        for (let i = 0; i <= 4; i++) {
-          console.log(`ROUND ${i + 1}`);
-          let playerPlay = prompt("Your Choice: ");
-          console.log(playRound(playerPlay, computerPlay()));
-        }
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            playRound(button.value, computerPlay());
+          });
+        });
+
         console.log(
           `\nThe Final Score is: Player-${playerScore} and Computer-${computerScore}`
         );
