@@ -1,5 +1,6 @@
 * {
   font-family: "Montserrat", sans-serif;
+  color: rgb(52 52 52);
 }
 .icons {
   width: 50px;
@@ -8,18 +9,21 @@
 .buttons {
   width: 70px;
   height: 70px;
+  background-color: white;
 }
-#comp {
-  width: 70px;
-  height: 70px;
+.buttons:hover {
+  background-color: rgb(255, 166, 0);
 }
+.buttons:focus {
+  outline: none;
+}
+
 #compChoice {
   text-align: center;
 }
 #container {
   display: grid;
   margin: 0 auto;
-  background-color: rgb(52 52 52);
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
