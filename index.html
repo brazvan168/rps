@@ -17,7 +17,6 @@
         <img id="comp-img" class="icons" />
       </button>
       <div id="score">
-        <div id="choices"><br /></div>
         <div id="current"></div>
         <div id="final"></div>
         <div id="winner"><br /></div>
@@ -52,7 +51,6 @@
       const buttons = document.querySelectorAll(".buttons");
       const compChoice = document.querySelector("#comp-img");
       const current = document.querySelector("#current");
-      const choices = document.querySelector("#choices");
       const final = document.querySelector("#final");
       const reset = document.querySelector("#reset");
       const score = document.querySelector("#score");
@@ -79,7 +77,6 @@
             playerScore++;
             if (playerScore === 5 || computerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
-            choices.textContent = roundChoices;
             displayComputerChoice(imageName);
           } else if (
             (playerSelection === "ROCK" && computerSelection === "PAPER") ||
@@ -89,13 +86,11 @@
             computerScore++;
             if (computerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
-            choices.textContent = roundChoices;
             displayComputerChoice(imageName);
           } else {
             playerScore++;
             if (playerScore === 5) game();
             current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
-            choices.textContent = roundChoices;
             displayComputerChoice(imageName);
           }
         }
@@ -109,8 +104,6 @@
         playerScore = 0;
         computerScore = 0;
         compChoice.removeAttribute("src");
-        choices.textContent = "";
-        choices.appendChild(lineBreak);
         current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
         current.style.display = "block";
         winner.style.visibility = "hidden";
