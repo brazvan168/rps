@@ -17,18 +17,20 @@
 }
 
 .buttons:hover,
-.player-buttons:hover {
+.player_buttons:hover {
   background-color: rgb(255, 166, 0);
 }
 
 .buttons:focus,
-.player-buttons:focus {
+.player_buttons:focus {
   outline: none;
   background-color: rgb(255, 166, 0);
 }
 .buttons:active,
-.player-buttons:active {
-  border-style: inset;
+.player_buttons:active {
+  border: inset;
+  border-color: black;
+  border-width: 2px;
 }
 
 #comp {
@@ -43,7 +45,7 @@
 }
 
 #comp:active {
-  border-style: outset;
+  border-style: none;
 }
 
 #compChoice {
@@ -94,12 +96,13 @@
   margin: 20px;
 }
 
-.player-buttons {
+.player_buttons {
   width: 70px;
   height: 70px;
   background-color: white;
   border-radius: 10px;
   border-style: none;
+  border: 1px solid black;
 }
 
 #comp-img {
