@@ -50,6 +50,7 @@
       const lineBreak = document.createElement("br");
       const buttons = document.querySelectorAll(".player-buttons");
       const compChoice = document.querySelector("#comp-img");
+      const comp = document.querySelector("#comp");
       const current = document.querySelector("#current");
       const final = document.querySelector("#final");
       const reset = document.querySelector("#reset");
@@ -72,6 +73,7 @@
         let roundChoices = `Your Choice: ${playerSelection} - Computer's Choice: ${computerSelection}`;
         if (playerScore === 5 || computerScore === 5) game();
         else {
+          compChoice.style.visibility = "visible";
           if (playerSelection === computerSelection) {
             computerScore++;
             playerScore++;
@@ -104,6 +106,8 @@
         playerScore = 0;
         computerScore = 0;
         compChoice.removeAttribute("src");
+        compChoice.src = " ";
+        compChoice.style.visibility = "hidden";
         current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
         current.style.display = "block";
         winner.style.visibility = "hidden";
