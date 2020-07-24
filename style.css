@@ -1,6 +1,7 @@
 * {
   font-family: "Montserrat", sans-serif;
-  color: rgb(52 52 52);
+  /* color: rgb(52 52 52); */
+  color: #fff;
 }
 
 .icons {
@@ -12,6 +13,7 @@
   width: 70px;
   height: 70px;
   background-color: white;
+  border-radius: 10px;
 }
 
 .buttons:hover,
@@ -24,7 +26,14 @@
   outline: none;
   background-color: rgb(255, 166, 0);
 }
+.buttons:active,
+.player-buttons:active {
+  border-style: inset;
+}
 
+#comp {
+  border-style: none;
+}
 #comp:focus {
   background-color: white;
 }
@@ -63,6 +72,10 @@
 
 #reset {
   margin: 0 auto 36px;
+  border-style: none;
+}
+#reset:active {
+  border-style: inset;
 }
 
 #winner {
@@ -85,6 +98,8 @@
   width: 70px;
   height: 70px;
   background-color: white;
+  border-radius: 10px;
+  border-style: none;
 }
 
 #comp-img {
@@ -92,8 +107,15 @@
 }
 
 #game {
-  border: 1px solid black;
-  margin: 0 auto;
+  border: 2px solid black;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(33, 62, 79, 1) 35%,
+    rgba(118, 127, 130, 1) 100%
+  );
+  margin: 100px auto 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
