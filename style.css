@@ -11,11 +11,19 @@
   height: 70px;
   background-color: white;
 }
-.buttons:hover {
+.buttons:hover,
+.player-buttons:hover {
   background-color: rgb(255, 166, 0);
 }
-.buttons:focus {
+.buttons:focus,
+.player-buttons:focus {
   outline: none;
+}
+#comp:hover {
+  background-color: white;
+}
+#comp:active {
+  border-style: outset;
 }
 
 #compChoice {
@@ -48,4 +56,10 @@
   text-align: center;
   font-size: 40px;
   margin: 20px;
+}
+
+.player-buttons {
+  width: 70px;
+  height: 70px;
+  background-color: white;
 }

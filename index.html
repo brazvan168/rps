@@ -22,13 +22,13 @@
         <div id="winner"><br /></div>
       </div>
       <div id="container">
-        <button id="rock" class="buttons" value="ROCK">
+        <button id="rock" class="player-buttons" value="ROCK">
           <img class="icons" src="icons/rock.svg" />
         </button>
-        <button id="paper" class="buttons" value="PAPER">
+        <button id="paper" class="player-buttons" value="PAPER">
           <img class="icons" src="icons/paper.svg" />
         </button>
-        <button id="scissors" class="buttons" value="SCISSORS">
+        <button id="scissors" class="player-buttons" value="SCISSORS">
           <img class="icons" src="icons/scissors.svg" />
         </button>
       </div>
@@ -48,7 +48,7 @@
       let playerScore = 0;
       let computerScore = 0;
       const lineBreak = document.createElement("br");
-      const buttons = document.querySelectorAll(".buttons");
+      const buttons = document.querySelectorAll(".player-buttons");
       const compChoice = document.querySelector("#comp-img");
       const current = document.querySelector("#current");
       const final = document.querySelector("#final");
