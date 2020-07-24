@@ -2,19 +2,23 @@
   font-family: "Montserrat", sans-serif;
   color: rgb(52 52 52);
 }
+
 .icons {
   width: 50px;
   height: 50px;
 }
+
 .buttons {
   width: 70px;
   height: 70px;
   background-color: white;
 }
+
 .buttons:hover,
 .player-buttons:hover {
   background-color: rgb(255, 166, 0);
 }
+
 .buttons:focus,
 .player-buttons:focus {
   outline: none;
@@ -24,9 +28,11 @@
 #comp:focus {
   background-color: white;
 }
+
 #comp:hover {
   background-color: white;
 }
+
 #comp:active {
   border-style: outset;
 }
@@ -34,34 +40,44 @@
 #compChoice {
   text-align: center;
 }
+
 #container {
   display: grid;
-  margin: 0 auto;
+
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
+  grid-column-gap: 20px;
   justify-items: center;
   padding: 10px;
-  max-width: 45%;
+  width: 250px;
+  justify-self: center;
 }
+
 #rock {
   justify-self: end;
 }
+
 #scissors {
   justify-self: start;
 }
+
 #reset {
-  margin: 0 auto;
+  margin: 0 auto 36px;
+}
+
+#winner {
+  text-align: center;
 }
 
 #score {
-  font-size: 25px;
+  font-size: 20px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .players-text {
   text-align: center;
-  font-size: 40px;
+  font-size: 2em;
   margin: 20px;
 }
 
@@ -70,6 +86,21 @@
   height: 70px;
   background-color: white;
 }
+
 #comp-img {
   visibility: hidden;
+}
+
+#game {
+  border: 1px solid black;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  max-width: 80%;
+}
+
+#final {
+  color: rgb(255, 166, 0);
 }
