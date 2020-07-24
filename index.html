@@ -56,7 +56,7 @@
       const reset = document.querySelector("#reset");
       const score = document.querySelector("#score");
       const winner = document.querySelector("#winner");
-      current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+      current.textContent = `Player:${playerScore} - Computer:${computerScore}`;
       function computerPlay() {
         function getRandomInt(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
@@ -78,7 +78,7 @@
             computerScore++;
             playerScore++;
             if (playerScore === 5 || computerScore === 5) game();
-            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            current.textContent = `Player:${playerScore} - Computer:${computerScore}`;
             displayComputerChoice(imageName);
           } else if (
             (playerSelection === "ROCK" && computerSelection === "PAPER") ||
@@ -87,12 +87,12 @@
           ) {
             computerScore++;
             if (computerScore === 5) game();
-            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            current.textContent = `Player:${playerScore} - Computer:${computerScore}`;
             displayComputerChoice(imageName);
           } else {
             playerScore++;
             if (playerScore === 5) game();
-            current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+            current.textContent = `Player:${playerScore} - Computer:${computerScore}`;
             displayComputerChoice(imageName);
           }
         }
@@ -108,7 +108,7 @@
         compChoice.removeAttribute("src");
         compChoice.src = " ";
         compChoice.style.visibility = "hidden";
-        current.textContent = `SCORE: Player -> ${playerScore} - Computer -> ${computerScore}`;
+        current.textContent = `Player:${playerScore} - Computer:${computerScore}`;
         current.style.display = "block";
         winner.style.visibility = "hidden";
         final.textContent = "";
@@ -116,7 +116,7 @@
       }
 
       function game() {
-        final.textContent = `Final Score: Player-${playerScore} and Computer-${computerScore}`;
+        final.textContent = `Final Score -> Player:${playerScore} - Computer:${computerScore}`;
         if (playerScore > computerScore) winner.textContent = "Winner: Player";
         else if (playerScore < computerScore)
           winner.textContent = "Winner: Computer";

@@ -18,6 +18,11 @@
 .buttons:focus,
 .player-buttons:focus {
   outline: none;
+  background-color: rgb(255, 166, 0);
+}
+
+#comp:focus {
+  background-color: white;
 }
 #comp:hover {
   background-color: white;
@@ -32,6 +37,7 @@
 #container {
   display: grid;
   margin: 0 auto;
+  /* margin: 10px auto 0px; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
@@ -50,6 +56,8 @@
 
 #score {
   font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .players-text {
